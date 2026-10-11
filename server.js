@@ -2,7 +2,7 @@ const express = require("express");
 const fetch = require("node-fetch");
 const app = express();
 
-const ALLOWED = ["80603660664031"]; // placeId-ове, които може да питат
+const ALLOWED = ["80603660664031", "129203155256146"]; // placeId-ове, които може да питат
 
 app.get("/servers/:placeId", async (req, res) => {
   const pid = req.params.placeId;
