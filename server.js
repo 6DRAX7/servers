@@ -9,7 +9,13 @@ app.get("/servers/:placeId", async (req, res) => {
   if (!ALLOWED.includes(pid)) return res.status(403).json({ error: "not allowed" });
   try {
     const r = await fetch(
-      `https://games.roblox.com/v1/games/${pid}/servers/Public?limit=100`
+      `https://games.roblox.com/v1/games/${pid}/servers/Public?limit=100`,
+      {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+          "Accept": "application/json"
+        }
+      }
     );
     const data = await r.json();
     const servers = (data.data || []).map(s => ({
